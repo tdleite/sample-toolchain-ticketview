@@ -1,0 +1,1177 @@
+@CHARSET "ISO-8859-1";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+/* ------------------------------------------------------------------------------------------------------------ font-family */
+body,
+textarea,
+pre {
+	font-family: sans-serif;
+}
+/* ------------------------------------------------------------------------------------------------------------ font-size */
+body {
+	font-size: 11px;
+}
+
+h3,
+textarea,
+pre,
+input {
+	font-size: 12px;
+}
+
+#log {
+	font-size: 14px;
+}
+
+.arrow {
+	font-size: 18px;
+}
+/* ------------------------------------------------------------------------------------------------------------ font-weight */
+#userName,
+#log,
+.dialogButtons button {
+	font-weight: bold;
+}
+/* ------------------------------------------------------------------------------------------------------------ background-color */
+.dialog {
+	background-color: rgba(0,0,0,0.75);
+}
+
+body {
+	background-color: rgb(245,245,245);
+}
+
+#header,
+.dialogTitle,
+#log {
+	background-color: #57417d
+}
+
+.dialogButtons button {
+    background-color: #29b35b;
+    border: none;
+}
+
+.dialogContainer,
+.mainContentGroup {
+	background-color: #fff;
+}
+
+option:hover,
+#editViewColumns .accordionGroupItemsDiv p:hover {
+	background-color: #d7f2fe;
+}
+/* ------------------------------------------------------------------------------------------------------------ color */
+.dialogTitle,
+.dialog button,
+#log,
+#header,
+#header a {
+	color: #fafaf0;
+}
+
+#loginError,
+#editViewError,
+#editCustomColumnError,
+#editPostItsError,
+#editNotificationsError {
+	color: #f00;
+}
+
+body,
+a {
+	color: #444444;
+}
+/* ------------------------------------------------------------------------------------------------------------ opacity */
+.dialog {
+	opacity:0;
+}
+/* ------------------------------------------------------------------------------------------------------------ text-align */
+.dialogButtons,
+#log,
+.viewColumnLabel {
+	text-align: center;
+}
+/* ------------------------------------------------------------------------------------------------------------ vertical-align */
+#logoIcon,
+#logoTitle,
+#navigation,
+#actions {
+	vertical-align: middle;
+}
+
+.viewColumn {
+	vertical-align: top;
+}
+/* ------------------------------------------------------------------------------------------------------------ float */
+#userContainer,
+.mainContentGroupMinimize,
+.mainContentGroupMaximize,
+#actions,
+.dialog .close {
+	float: right;
+}
+/* ------------------------------------------------------------------------------------------------------------ display */
+#logoTitle,
+.accordionGroupHeaderTitle {
+	display: inline;
+}
+
+#navigation,
+#actions,
+.viewColumn {
+	display: inline-block;
+}
+
+#log {
+	display: none;
+}
+/* ------------------------------------------------------------------------------------------------------------ position */
+.dialog,
+#log {
+	position: fixed;
+}
+/* ------------------------------------------------------------------------------------------------------------ top */
+.dialog {
+	top: 0;
+}
+/* ------------------------------------------------------------------------------------------------------------ left */
+.dialog,
+#log {
+	left: 0;
+}
+/* ------------------------------------------------------------------------------------------------------------ bottom */
+.dialog {
+	bottom: 0;
+}
+/* ------------------------------------------------------------------------------------------------------------ right */
+.dialog,
+#log {
+	right: 0;
+}
+/* ------------------------------------------------------------------------------------------------------------ z-index */
+.dialog {
+	z-index: 999;
+}
+/* ------------------------------------------------------------------------------------------------------------ pointer-events */
+.dialog {
+	pointer-events: none;
+}
+/* ------------------------------------------------------------------------------------------------------------ cursor */
+button,
+.mainContentGroupMinimize,
+.mainContentGroupMaximize,
+.postIt,
+select,
+option,
+.dialog .close,
+.accordionGroupHeaderDiv,
+#editViewColumns .accordionGroupItemsDiv p {
+	cursor: pointer;
+}
+/* ------------------------------------------------------------------------------------------------------------ margin */
+#loginDialog .dialogContainer,
+#editCustomColumnDialog .dialogContainer,
+#editMonitoringQueuesDialog .dialogContainer,
+#expressionHelpDialog .dialogContainer,
+#editPostItsDialog .dialogContainer,
+#inputDialog .dialogContainer,
+#editViewDialog .dialogContainer,
+#pmrDetailsDialog .dialogContainer  {
+	margin: 0 auto;
+}
+
+#userName {
+	margin-bottom: 5px;
+}
+
+input,
+select,
+button,
+.accordionGroupHeaderDiv {
+	margin: 5px 0;
+}
+
+.viewColumn {
+	margin: 5px;
+}
+
+.viewColumn {
+	margin-bottom: 0;
+}
+
+.mainContentGroup {
+	margin-bottom: 10px;
+}
+
+.arrow {
+	margin: 0 5px;
+}
+
+.viewColumn {
+    margin-top: 0;
+}
+
+.postIt,
+#pmrDetailsText  {
+	margin: 5px 0;
+}
+
+.dialog .close {
+    margin-right: 10px;
+}
+
+.dialog .close {
+    margin-top: 5px;
+    width: 14px;
+}
+/* ------------------------------------------------------------------------------------------------------------ padding */
+.dialogTitle {
+	padding: 5px 20px;
+}
+
+.dialogBody {
+	padding: 5px 10px;
+}
+
+input,
+select,
+#log {
+	padding: 2px;
+}
+
+button {
+	padding: 1px 10px;
+}
+
+#controls,
+#header,
+#mainContent {
+	padding: 5px 10px;
+}
+
+.mainContentGroup {
+	padding: 10px;
+}
+
+.mainContentGroupBody {
+	/* padding: 10px 10px 0 10px; */
+}
+
+.pmrTextLineNormal,
+.pmrTextLineSystem,
+.pmrTextLinePrivateNote {
+	padding: 3px;
+}
+
+.accordionGroupItemsDiv p {
+	padding: 3px 0 3px 15px;
+}
+/* ------------------------------------------------------------------------------------------------------------ box-sizing */
+input,
+select {
+    box-sizing: content-box;
+}
+/* ------------------------------------------------------------------------------------------------------------ width */
+#loginDialog .dialogContainer {
+	width: 400px;
+}
+
+#editViewDialog .dialogContainer,
+#pmrDetailsDialog .dialogContainer {
+	width: 90%;
+}
+
+input {
+	width: 150px;
+}
+
+select {
+	width: 250px;
+}
+
+#logoIcon {
+	width: 42px;
+	margin-right: 5px;
+}
+
+#searchPMR {
+	width: 200px;
+}
+
+.postIt {
+	width: 190px;
+}
+
+.viewColumnPostIts {
+	width: 220px;
+}
+
+/* ------------------------------------------------------------------------------------------------------------ height */
+.postIt {
+    height: 140px;
+}
+
+.viewColumnPostIts {
+	height: 330px;
+}
+
+/* ------------------------------------------------------------------------------------------------------------ line-height */
+.PMRNo,
+.PMRComment,
+.PMRClient,
+.PMRSeverity.
+.PMRAge {
+	line-heigth: 1;
+}
+/* ------------------------------------------------------------------------------------------------------------ text-indent */
+.pmrTextLineNormal,
+.pmrTextLinePrivateNote {
+	text-indent: 50px;
+}
+/* ------------------------------------------------------------------------------------------------------------ border */
+.mainContentGroup {
+	border: 1px solid #a9a9a9;
+}
+
+.postIt {
+	border: 3px solid #fff;
+}
+
+.postIt:hover {
+	border: 3px solid #999999;
+}
+/* ------------------------------------------------------------------------------------------------------------ border-radius */
+
+/* ------------------------------------------------------------------------------------------------------------ box-shadow */
+
+/* ------------------------------------------------------------------------------------------------------------ overflow */
+.mainContentGroupBody,
+.viewColumnPostIts {
+	overflow: auto;
+}
+/* ------------------------------------------------------------------------------------------------------------ white-space */
+.mainContentGroupBody {
+	white-space: nowrap;
+	margin-top: 10px;
+}
+
+p {
+	white-space: normal;
+}
+/* ------------------------------------------------------------------------------------------------------------ word-wrap */
+p {
+	word-wrap: break-word;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#pmrDetailsDialog .dialogBody {
+	overflow: auto;
+}
+
+#header {
+	display: table;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#logo,
+#search,
+#user {
+	display: table-cell;
+	vertical-align: middle;
+	width: 20%;
+}
+
+
+.dialogBodyDiv {
+	display: inline-block;
+	vertical-align: top;
+	margin-top: 10px;
+}
+
+#editViewColumns,
+#editCustomColumnAttributes,
+#editCustomColumnValues {
+	width: 250px;
+}
+
+#editViewGroups {
+	margin-left: 10px;
+	background-color: rgb(250,250,250);
+}
+
+
+
+
+#editViewColumns .dialogBodyDivBody,
+#editViewGroups .dialogBodyDivBody {
+	overflow: auto;
+	margin-left: 10px;
+	margin-top: 5px;
+}
+
+#editViewAddGroup {
+	margin: 5px 0;
+	display: block;
+	font-size: 12px;
+}
+
+.editViewGroup:hover {
+	background-color: #d7f2fe;
+}
+
+.editViewGroup {
+	margin: 10px 10px 10px 0;
+	background-color: #fff;
+	padding: 5px;
+	border: 1px solid #a9a9a9;
+	/* border-radius: 5px; */
+	cursor: pointer;
+}
+
+.editViewGroup .delete {
+	float: right;
+	cursor: pointer;
+	width: 14px;
+}
+
+
+.editViewGroupColumn {
+	display: inline-block;
+	vertical-align: top;
+}
+
+
+.editViewGroupColumnPostIt {
+	width: 48px;
+	display: block;
+	margin: 5px auto;
+}
+
+
+.editViewGroupColumn {
+	margin: 10px;
+	border: 1px solid #a9a9a9;
+	padding: 5px;
+	background-color: #fff;
+	min-width: 60px;
+}
+
+.editViewGroupColumn:hover {
+	background-color: #d7f2fe;
+}
+
+
+.editViewGroupColumns {
+	overflow: auto;
+	white-space: nowrap;
+}
+
+
+#editViewError {
+	margin-top: 10px;
+	position: absolute;
+}
+
+#editCustomColumnError,
+#editPostItsError {
+	height: 15px;
+}
+
+input[type=checkbox] {
+	width: auto;
+	display: inline;
+	vertical-align: sub;
+	margin-right: 5px;
+}
+
+#inputDialog .dialogContainer {
+	min-width: 300px;
+    max-width: 650px;
+}
+
+input {
+	display: block;
+}
+
+#editMonitoringQueuesDialog .dialogContainer {
+	width: 350px;
+}
+
+
+#editMonitoringQueuesDialog .dialogBodyDivBody p {
+	padding: 3px 0;
+	cursor: pointer;
+	padding: 3px 0 3px 10px;
+}
+
+#editMonitoringQueuesDialog .dialogBodyDivBody p:hover {
+	background-color:  #d7f2fe;
+}
+
+
+#editMonitoringQueuesDialog .dialogBodyDivBody  {
+	overflow: auto;
+	border: 3px solid #fff;
+	margin-top: 5px;
+}
+
+.dialogContainer {
+	border: 4px solid #57417d;
+	border-radius: 5px;
+}
+
+#controls {
+	font-weight: bold;
+}
+
+#searchPMR {
+	margin: 0 auto;
+}
+
+.postIt {
+	padding: 5px;
+}
+
+.postIt p {
+	margin: 3px 0;
+	font-size: 11px;
+}
+
+.viewColumnPostIts {
+	border: 3px solid #fff;
+}
+
+#askDialog .dialogContainer {
+	width: 350px;
+	margin: 20% auto;
+}
+
+#askQuestion {
+	line-height: 1.5;
+	font-size: 14px;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+.dialogButtons button {
+	margin: 5px 20px;
+}
+
+
+
+
+
+
+.ui-resizable-handle.ui-resizable-se.ui-icon.ui-icon-gripsmall-diagonal-se {
+	cursor: initial;
+}
+
+[id^=viewGroup].mainContentGroup {
+	min-height: 220px;
+}
+
+.viewColumnPostIts {
+	min-height: 165px;
+}
+
+.dialog .help {
+	float: right;
+	margin-top: 5px;
+	margin-right: 10px;
+	cursor: pointer;
+	width: 14px;
+}
+
+#searchIcon {
+	display: block;
+    margin: 0 auto;
+    position: relative;
+    top: -13px;
+    left: 90px;
+}
+
+#editViewHelpDialog .dialogContainer {
+	width: 500px;
+	margin: 4% auto;
+}
+
+#editViewHelpDialog .dialogBody,
+#editMonitoringQueuesHelpDialog .dialogBody {
+	overflow: auto
+}
+
+.editViewHelpTitle,
+.editMonitoringQueuesHelpTitle {
+	margin-top: 10px;
+}
+
+.editViewHelpDescription,
+.editMonitoringQueuesHelpDescription {
+	margin-left: 30px;
+	line-height: 1.5
+}
+
+
+
+
+
+
+
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background-color: #eaeaea;
+    border-left: 1px solid #ccc;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: #aaa;
+}
+
+
+
+
+#editMonitoringQueuesHelpDialog .dialogContainer {
+	width: 300px;
+	margin: 0 auto;
+}
+
+#inputDialog {
+	font-size: 12px;
+}
+
+#searchPMR {
+	position: relative;
+	top: 8px;
+}
+
+#userName {
+	font-size: 12px
+}
+
+#controls {
+	font-size: 12px;
+	margin-top: 5px;
+}
+
+#log {
+	z-index: 10;
+	padding: 5px;
+}
+
+#loginError, 
+#editViewError,
+#editCustomColumnError,
+#editPostItsError,
+#editNotificationsError {
+	font-size: 12px;
+}
+
+.dialog h1,
+.mainContentGroupTitle {
+	font-size: 14px;
+}
+
+.sortPMRs {
+	vertical-align: bottom;
+	margin-left: 5px;
+	cursor: pointer;
+}
+
+.postIt:first-child {
+	margin: 0;
+}
+
+.viewColumnPostIts {
+	margin-top: 2px;
+}
+
+.sortPMRsMenu {
+	background-color: white;
+	border: 1px solid;
+	display: inline-block;
+	position: absolute;
+}
+
+.sortPMRsMenu p {
+	cursor: pointer;
+	padding: 2px 5px;
+	margin: 0;
+}
+
+.sortPMRsMenu p:hover {
+	background-color: #d7f2fe;
+}
+
+.sortPMRsMenu p img {
+	vertical-align: bottom;
+	margin-left: 3px;
+}
+
+#searchPMR {
+	padding: 2px 5px;
+}
+
+option {
+	padding: 2px;
+}
+
+#log {
+	bottom: 0;
+}
+
+#expressionHelpDialog .dialogBodyDivBody p {
+	padding: 3px 0 3px 15px;
+}
+
+#expressionHelpDialog .dialogBodyDivBody p:first-child {
+	margin-top: 5px;
+}
+
+#expressionHelpDialog .dialogBodyDivBody strong {
+	font-size: 14px;
+	margin-left: 10px;
+}
+
+#expressionHelpSyntax {
+	width: 200px;
+	overflow: auto;
+}
+
+#expressionHelpAttributes {
+	width: 200px;
+	overflow: auto;
+	margin-right: 10px;
+}
+
+#expressionHelpValues {
+	width: 200px;
+	overflow: auto;
+	margin-right: 10px;
+}
+
+#editCustomColumnDialog .dialogContainer {
+	height: 276px;
+    width: 370px;
+}
+
+#expressionHelpDialog .dialogBodyDivBody {
+	overflow: auto;
+}
+
+#expressionHelpDialog .dialogBody {
+	overflow: auto;
+	white-space: nowrap;
+}
+
+#savedViews {
+	margin: 0;
+}
+
+#editPostItsDialog .dialogContainer {
+    height: 450px;
+    width: 683px;
+}
+
+#editPostItsDialog .dialogBodyDiv {
+	height: 365px;
+}
+
+#expressionHelpDialog .dialogContainer {
+	width: 650px;
+}
+
+#editPostItsDialog .accordionGroupItemsDiv img {
+	width: 64px;
+	margin-left: 10px;
+	vertical-align: top;
+	margin-right: 10px;
+}
+
+#editPostItsDialog .editPostItExpression {
+	vertical-align: top;
+}
+
+#editPostItsDialog .editPostItAttribute,
+#editPostItTable {
+	vertical-align: top;
+	width: 200px;
+	height: 150px;
+}
+
+#editPostItsDialog .accordionGroupItemsDiv {
+	margin: 10px 0;
+}
+
+#editPostItsDialog .accordionGroupItemsDiv img {
+	margin-top: 25px;
+}
+
+#editPostItsDialog .accordionGroupItemsDiv h3 {
+	margin-bottom: 10px;
+}
+
+#editPostItsDialog .dialogBodyDivBody {
+	margin-bottom: 10px;
+}
+
+#editPostItsDialog .accordionGroupItemsDiv div {
+	display: inline-block;
+	margin-right: 5px;
+}
+
+#editPostItsDialog .dialogBody {
+	overflow: auto;
+}
+
+#notification {
+	position: absolute;
+	border: 1px solid;
+	background-color: rgb(255, 171, 171);
+	padding: 3px;
+	font-weight: bold;
+	z-index: 9;
+	display: none;
+}
+
+#editViewName {
+	display: inline-block;
+}
+
+#editViewIsPublic,
+#editViewMainView {
+	margin-left: 10px;
+}
+
+.contextMenu {
+	box-shadow: 3px 3px 3px #aaa;
+}
+
+
+
+
+
+
+
+.viewTableGroup {
+	text-align: center;
+	font-weight: bold;
+	font-size: 12px;
+}
+
+.viewTableColumn {
+	font-weight: bold;
+	font-size: 12px;
+}
+
+.viewTableColumn td {
+	border-top: 1px solid #a9a9a9;
+}
+
+.viewTableHeader {
+	font-weight: bold;
+}
+
+.viewTableLineBreak {
+	height: 20px;
+}
+
+#viewTable td {
+	padding: 2px 10px;
+}
+
+
+
+
+textarea{
+  	resize: none;
+  	box-sizing: border-box;
+	padding: 5px;
+}
+
+
+
+
+.expression textarea, .expression pre {
+  	position: relative;
+  	margin: 0;
+  	border: 1px solid #a9a9a9;
+  	height: 150px;
+  	width: 350px;
+  	overflow: auto;
+  	overflow-x: hidden;
+  	font-family: monospace;
+  	white-space: pre-line;
+}
+
+.expression textarea{
+  	z-index: 1;
+  	background-color: transparent;
+  	-webkit-text-fill-color: transparent;
+}
+
+.expression {
+	vertical-align: top;
+	height: 155px;
+}
+
+.expression pre {
+	top: -150px;
+	box-sizing: border-box;
+	padding: 5px;
+}
+
+.expressionAttribute {
+  	color: rgb(0, 200, 0);
+}
+
+.expressionOperator {
+  	color: darkorange;
+}
+
+.expressionValue,
+.expressionValue .expressionNumber{
+  	color: rgb(0, 0, 200);
+}
+
+.expressionNumber {
+  	color: red;
+}
+
+#loading {
+	opacity: 0;
+	background-color: rgba(0,0,0,0.75);
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	z-index: 99999;
+	pointer-events: none;
+}
+
+#loading div {
+	text-align: center;
+	margin: 20%;	
+}
+
+#loading img {
+	height: 50px;	
+}
+
+
+
+
+
+#editNotificationsDialog .dialogContainer {
+	margin: 0 auto;
+	width: 410px;
+}
+
+#editNotificationsDialog .accordionGroupItemsDiv {
+	margin-left: 30px;
+	margin-top: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+#menu {
+	cursor: pointer;
+	float: right;
+}
+
+#menuActions {
+	background-color: white;
+	border: 1px solid #a9a9a9;
+	display: none;
+	clear: both;
+	position: relative;
+	z-index: 999;
+}
+
+#menuActions div {
+	cursor: pointer;
+	padding: 5px 10px;
+}
+
+#menuActions div:hover {
+	background-color: #d7f2fe;
+}
+
+#menuActions img {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#menuActions p {
+	display: inline-block;
+	vertical-align: middle;
+	font-weight: normal;
+	margin-left: 5px;
+}
+
+#actions:hover #menuActions {
+	display: block;
+} 
+
+
+
+
+#editNotificationsDialog button {
+	background-color: #29b35b;
+    border: none;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px
+}
+
+
+
+
+#loginRetain {
+	display: inline-block;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding-right: 30px;
+	border-right: 1px solid #a9a9a9;
+}
+
+#loginIntranet {
+	display: inline-block;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding-left: 30px;
+}
+
+.pmrTextLineSystem {
+	background-color: rgb(235,235,235);
+}
+
+.pmrTextLinePrivateNote {
+	background-color: rgb(153, 186, 224);
+}
+
+#pmrDetailsDialog .accordion,
+#pmrDetailsText {
+	display: inline-block;
+	vertical-align: top;
+	overflow: auto;
+}
+
+#pmrDetailsDialog .accordion {	
+	padding-right: 20px;
+}
+
+#pmrDetailsText {
+	width: 700px;
+}
+
+#pmrDetailsText {
+	border-left: 1px solid #a9a9a9;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+#pmrDetailsActions .accordionGroupItemsDiv {
+	margin-left: 15px;
+}
+
+#pmrDetailsActions .accordionGroupItemsDiv div p,
+#pmrDetailsActions .accordionGroupItemsDiv div img {
+	display: inline-block;
+	vertical-align: top;
+	padding: 2px;
+}
+
+#pmrDetailsActions .accordionGroupItemsDiv div:hover {
+	background-color: #d7f2fe;
+}
+
+#pmrDetailsActions .accordionGroupItemsDiv div {
+	padding: 3px;
+	cursor: pointer;
+}
+
+#pmrDetailsFiles .accordionGroupItemsDiv div,
+#pmrDetailsEmails .accordionGroupItemsDiv div {
+	margin-left: 15px;
+	margin-bottom: 5px;
+}
+
+#pmrDetailsFiles .accordionGroupItemsDiv img,
+#pmrDetailsEmails .accordionGroupItemsDiv img {
+	margin-right: 5px;
+	vertical-align: top;
+}
+
+#pmrDetailsFiles .accordionGroupItemsDiv div,
+#pmrDetailsEmails .accordionGroupItemsDiv div  {
+	white-space: nowrap
+}
+
+
+
+.dialog .dialogContainer {
+	position: relative;
+	top: 50%;
+	 transform: translateY(-50%);
+}
+
+#editNotificationsDialog .dialogBody {
+	overflow: auto;
+}
+
+#loginDialog .dialogContainer {
+	height: 180px;
+}

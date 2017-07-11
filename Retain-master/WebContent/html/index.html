@@ -1,0 +1,817 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD HTML 4.01 Transitional//EN' 'http://www.w3.org/TR/html4/loose.dtd'>
+<html>
+	<head>
+		<meta http-equiv='Content-Type' content='text/html; charset=ISO-8859-1'>
+		<link rel="shortcut icon" href="img/logo.png">
+		<title>TicketView</title>
+		<script src='js/jquery-2.1.4.min.js'></script>
+		<script src='js/jquery-ui.min.js'></script>
+		<script src='js/utils.js'></script>
+		<script src='js/session.js'></script>
+		<script src='js/view.js'></script>
+		<script src='js/pmr.js'></script>
+		<script src='js/queue.js'></script>
+		<script src='js/engineer.js'></script>
+		<script src='js/client.js'></script>
+		<script src='js/pmrstatus.js'></script>
+		<script src='js/notification.js'></script>
+		<script src='js/privatenote.js'></script>
+		<script src='js/index.js'></script>
+		<link rel='stylesheet' type='text/css' href='css/style.css'>
+		<link rel='stylesheet' type='text/css' href='css/jquery-ui.css'>
+	</head>
+	<body>
+		<a id="download" style="display:none"></a>
+		<input type="file" id="upload" style="display:none">
+
+		<div class="dialog" id="loginDialog">
+			<section class="dialogContainer">
+				<h1 class="dialogTitle">Login</h1>
+				<div class="dialogBody">
+					<div id="loginRetain">
+						<h3>Retain</h3>
+						<input id="loginRetainID" type="text" placeholder="retain ID">
+						<input id="loginRetainPassword" type="password" placeholder="retain password">
+					</div>
+					<div id="loginIntranet">
+						<h3>Intranet</h3>
+						<input id="loginIntranetID" type="text" placeholder="intranet ID">
+						<input id="loginIntranetPassword" type="password" placeholder="intranet password">	
+					</div>									
+					<p id="loginError"></p>
+					<div class="dialogButtons">
+						<button class="ok">OK</button>
+					</div>
+				</div>
+			</section>
+		</div>
+
+		<div class="dialog" id="editViewDialog">
+			<section class="dialogContainer">
+				<img class="close" src="img/close.png" title="Close">
+				<img class="help" src="img/questionmark.png" title="Help">
+				<h1 class="dialogTitle">Edit View</h1>
+				<div class="dialogBody">
+					<div>
+						<input id="editViewName" type="text" placeholder="name">
+						<input id="editViewIsPublic" type="checkbox">Is Public
+						<input id="editViewMainView" type="checkbox">Main View
+					</div>
+					<div class="dialogBodyDiv" id="editViewColumns">
+						<h3 class="dialogBodyDivTitle">Columns</h3>
+						<div class="dialogBodyDivBody">
+
+							<div class="accordion">
+								<div class="accordionGroup" id="editViewMonitoringQueues">
+									<div class="accordionGroupHeaderDiv">
+										<img class="accordionGroupHeaderIcon">
+										<h3 class="accordionGroupHeaderTitle">Monitoring Queues</h3>
+									</div>
+									<div class="accordionGroupItemsDiv">
+									</div>
+								</div>
+
+								<div class="accordionGroup" id="editViewAllQueues">
+									<div class="accordionGroupHeaderDiv">
+										<img class="accordionGroupHeaderIcon">
+										<h3 class="accordionGroupHeaderTitle">All Queues</h3>
+									</div>
+									<div class="accordionGroupItemsDiv">
+									</div>
+								</div>
+
+								<div class="accordionGroup" id="editViewEngineers">
+									<div class="accordionGroupHeaderDiv">
+										<img class="accordionGroupHeaderIcon">
+										<h3 class="accordionGroupHeaderTitle">Engineers</h3>
+									</div>
+									<div class="accordionGroupItemsDiv">
+									</div>
+								</div>
+
+								<div class="accordionGroup" id="editViewStatus">
+									<div class="accordionGroupHeaderDiv">
+										<img class="accordionGroupHeaderIcon">
+										<h3 class="accordionGroupHeaderTitle">Status</h3>
+									</div>
+									<div class="accordionGroupItemsDiv">
+										<p class="accordionGroupItem" columntype="status" columnvalue="In Progress">In Progress</p>
+										<p class="accordionGroupItem" columntype="status" columnvalue="On Hold">On Hold</p>
+										<p class="accordionGroupItem" columntype="status" columnvalue="Waiting L2">Waiting L2</p>
+										<p class="accordionGroupItem" columntype="status" columnvalue="Waiting L3">Waiting L3</p>
+										<p class="accordionGroupItem" columntype="status" columnvalue="Waiting Client">Waiting Client</p>
+										<p class="accordionGroupItem" columntype="status" columnvalue="IFix In Progress">IFix In Progress</p>
+										<p class="accordionGroupItem" columntype="status" columnvalue="IFix Testing">IFix Testing</p>
+										<p class="accordionGroupItem" columntype="status" columnvalue="IFix Done">IFix Done</p>
+										<p class="accordionGroupItem" columntype="status" columnvalue="Client Testing IFix">Client Testing IFix</p>
+										<p class="accordionGroupItem" columntype="status" columnvalue="Done">Done</p>
+									</div>
+								</div>
+
+								<div class="accordionGroup" id="editViewAttribute">
+									<div class="accordionGroupHeaderDiv">
+										<img class="accordionGroupHeaderIcon">
+										<h3 class="accordionGroupHeaderTitle">PMR Attribute</h3>
+									</div>
+									<div class="accordionGroupItemsDiv">
+										<p class="accordionGroupItem" columntype="attribute" columnvalue="aged">Aged</p>
+										<p class="accordionGroupItem" columntype="attribute" columnvalue="critsit">CritSit</p>
+										<p class="accordionGroupItem" columntype="attribute" columnvalue="noowner">No Owner</p>
+										<p class="accordionGroupItem" columntype="attribute" columnvalue="noresolver">No Resolver</p>
+										<p class="accordionGroupItem" columntype="attribute" columnvalue="noresolver5">No Resolver5</p>
+										<p class="accordionGroupItem" columntype="attribute" columnvalue="severity1">Severity 1</p>
+										<p class="accordionGroupItem" columntype="attribute" columnvalue="severity2">Severity 2</p>
+										<p class="accordionGroupItem" columntype="attribute" columnvalue="severity3">Severity 3</p>
+										<p class="accordionGroupItem" columntype="attribute" columnvalue="severity4">Severity 4</p>
+									</div>
+								</div>
+
+								<div class="accordionGroup" id="editViewClients">
+									<div class="accordionGroupHeaderDiv">
+										<img class="accordionGroupHeaderIcon">
+										<h3 class="accordionGroupHeaderTitle">Clients</h3>
+									</div>
+									<div class="accordionGroupItemsDiv">
+									</div>
+								</div>
+								
+								<div class="accordionGroup" id="editViewCustom">
+									<div class="accordionGroupHeaderDiv">
+										<img class="accordionGroupHeaderIcon">
+										<h3 class="accordionGroupHeaderTitle">Custom</h3>
+									</div>
+									<div class="accordionGroupItemsDiv">
+										<p class="accordionGroupItem" columntype="custom" columnvalue="">Custom</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="dialogBodyDiv" id="editViewGroups">
+						<h3 class="dialogBodyDivTitle">Groups</h3>
+						<div class="dialogBodyDivBody">
+							<a href="#" id="editViewAddGroup">Add Group</a>
+						</div>
+					</div>
+
+					<p id="editViewError"></p>
+					<div class="dialogButtons">
+						<button class="ok">OK</button>
+						<button id="deleteView">Delete</button>
+					</div>
+				</div>
+		</section>
+	</div>
+	
+	<div class="dialog" id="editCustomColumnDialog">
+		<section class="dialogContainer">
+			<img class="close" src="img/close.png" title="Close">
+			<img class="help" src="img/questionmark.png" title="Help">
+			<h1 class="dialogTitle">Edit Custom Column</h1>
+			<div class="dialogBody">
+				<div class="dialogBodyDiv" id="editCustomColumnColumn">
+					<div class="dialogBodyDivBody">
+						<input id="editCustomColumnLabel" type="text" placeholder="label" value="Custom">
+						<div class="expression">
+							<textarea spellcheck="false" id="editCustomColumnValue" placeholder="number &#10;comment &#10;severity &#10;age"></textarea>
+							<pre></pre>
+						</div>
+					</div>
+				</div>
+
+				<p id="editCustomColumnError"></p>
+				<div class="dialogButtons">
+					<button class="ok">OK</button>
+				</div>
+			</div>
+		</section>
+	</div>
+	
+	<div class="dialog" id="expressionHelpDialog">
+		<section class="dialogContainer">
+			<img class="close" src="img/close.png" title="Close">
+			<h1 class="dialogTitle">Expression Help</h1>
+			<div class="dialogBody">
+
+				<div class="dialogBodyDiv" id="expressionHelpAttributes">
+					<h3 class="dialogBodyDivTitle">Attributes</h3>
+					<div class="dialogBodyDivBody">
+						<p>Age (integer)</p>
+						<p>Client (string)</p>
+						<p>CritSit ('Y' or 'N')</p>
+						<p>Comment (string)</p>
+						<p>ICN (string)</p>
+						<p>Number (string)</p>
+						<p>OwnerName (string)</p>
+						<p>OwnerID (string)</p>
+						<p>Queue (string)</p>
+						<p>QueueName (string)</p>
+						<p>ResolverName (string)</p>
+						<p>ResolverID (string)</p>
+						<p>Resolver5Name (string)</p>
+						<p>Resolver5ID (string)</p>
+						<p>Severity (integer)</p>					
+						<p>DaysOnQueue (integer)</p>			
+					</div>
+				</div>
+
+				<div class="dialogBodyDiv" id="expressionHelpValues">
+					<h3 class="dialogBodyDivTitle">Values</h3>
+					<div class="dialogBodyDivBody">
+							<div class="accordion">
+								<div class="accordionGroup" id="expressionHelpMonitoringQueues">
+									<div class="accordionGroupHeaderDiv">
+										<img class="accordionGroupHeaderIcon">
+										<h3 class="accordionGroupHeaderTitle">Monitoring Queues</h3>
+									</div>
+									<div class="accordionGroupItemsDiv">
+									</div>
+								</div>
+
+								<div class="accordionGroup" id="expressionHelpAllQueues">
+									<div class="accordionGroupHeaderDiv">
+										<img class="accordionGroupHeaderIcon">
+										<h3 class="accordionGroupHeaderTitle">All Queues</h3>
+									</div>
+									<div class="accordionGroupItemsDiv">
+									</div>
+								</div>
+
+								<div class="accordionGroup" id="expressionHelpEngineers">
+									<div class="accordionGroupHeaderDiv">
+										<img class="accordionGroupHeaderIcon">
+										<h3 class="accordionGroupHeaderTitle">Engineers (retainID)</h3>
+									</div>
+									<div class="accordionGroupItemsDiv">
+									</div>
+								</div>
+
+								<div class="accordionGroup" id="expressionHelpStatus">
+									<div class="accordionGroupHeaderDiv">
+										<img class="accordionGroupHeaderIcon">
+										<h3 class="accordionGroupHeaderTitle">Status</h3>
+									</div>
+									<div class="accordionGroupItemsDiv">
+										<p class="accordionGroupItem" columntype="status" columnvalue="In Progress">In Progress</p>
+										<p class="accordionGroupItem" columntype="status" columnvalue="On Hold">On Hold</p>
+										<p class="accordionGroupItem" columntype="status" columnvalue="Waiting L2">Waiting L2</p>
+										<p class="accordionGroupItem" columntype="status" columnvalue="Waiting L3">Waiting L3</p>
+										<p class="accordionGroupItem" columntype="status" columnvalue="Waiting Client">Waiting Client</p>
+										<p class="accordionGroupItem" columntype="status" columnvalue="IFix In Progress">IFix In Progress</p>
+										<p class="accordionGroupItem" columntype="status" columnvalue="IFix Testing">IFix Testing</p>
+										<p class="accordionGroupItem" columntype="status" columnvalue="IFix Done">IFix Done</p>
+										<p class="accordionGroupItem" columntype="status" columnvalue="Client Testing IFix">Client Testing IFix</p>
+										<p class="accordionGroupItem" columntype="status" columnvalue="Done">Done</p>
+									</div>
+								</div>
+
+								<div class="accordionGroup" id="expressionHelpClients">
+									<div class="accordionGroupHeaderDiv">
+										<img class="accordionGroupHeaderIcon">
+										<h3 class="accordionGroupHeaderTitle">Clients (ICN)</h3>
+									</div>
+									<div class="accordionGroupItemsDiv">
+									</div>
+								</div>
+
+							</div>
+					</div>
+				</div>
+
+				<div class="dialogBodyDiv" id="expressionHelpSyntax">
+					<h3 class="dialogBodyDivTitle">Syntax and Rules</h3>
+					<div class="dialogBodyDivBody">
+						<p>and <strong>&&</strong></p>
+						<p>or <strong>||</strong></p>
+						<p>greater <strong>></strong></p>
+						<p>greater or equal <strong>>=</strong></p>
+						<p>less <strong><</strong></p>
+						<p>less or equal <strong><=</strong></p>
+						<p>equal <strong>==</strong></p>
+						<p>not equal <strong>!=</strong></p>
+						<p>like <strong>like</strong></p>
+						<p>string <strong>' ' or " "</strong></p>
+						<p>separator <strong>( )</strong></p>
+						<p>monitoringQueue returns true if PMR queue is on Monitoring Queues</p>
+						<p>case insensitive</p>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+
+
+	<div class="dialog" id="askDialog">
+		<section class="dialogContainer">
+			<h1 class="dialogTitle">Confirmation</h1>
+			<div class="dialogBody">
+				<p id="askQuestion"></p>
+				<div class="dialogButtons">
+					<button id="askYes">Yes</button>
+					<button id="askNo">No</button>
+				</div>
+			</div>
+		</section>
+	</div>
+
+	<div class="dialog" id="inputDialog">
+		<section class="dialogContainer">
+			<img class="close" src="img/close.png" title="Close">
+			<h1 class="dialogTitle"></h1>
+			<div class="dialogBody">
+				<div id="inputFields">
+				</div>
+				<div class="dialogButtons">
+					<button class="ok">OK</button>
+				</div>
+			</div>
+		</section>
+	</div>
+	
+	<div class="dialog" id="editNotificationsDialog">
+		<section class="dialogContainer">
+			<img class="close" src="img/close.png" title="Close">
+			<h1 class="dialogTitle">Notifications</h1>
+			<div class="dialogBody">
+				<div class="dialogBodyDiv">				
+
+					<div class="accordion">
+						<div class="accordionGroup"">
+							<div class="accordionGroupHeaderDiv">
+								<img class="accordionGroupHeaderIcon">
+								<h3 class="accordionGroupHeaderTitle">Notifications</h3>
+							</div>
+							<div class="accordionGroupItemsDiv" id="editNotificationsNotifications">
+								<div id="editNotificationsNotificationsDiv"></div>
+								<button id=editNotificationsAck>Acknowledge</button>
+							</div>
+						</div>
+						
+						<div class="accordionGroup">
+							<div class="accordionGroupHeaderDiv">
+								<img class="accordionGroupHeaderIcon">
+								<h3 class="accordionGroupHeaderTitle">Configuration</h3>
+							</div>
+							<div class="accordionGroupItemsDiv">
+								<h3>New PMR on Queue:</h3>
+								<div class="expression">
+									<textarea id="editNotificationsNewPMROnQueue" spellcheck="false" spellcheck="false" placeholder="(number like '99999' || client == 'ABC') && ownerName == 'John Paul' && age >= '30' && monitoringQueue"></textarea>
+									<pre></pre>
+								</div>	
+								<h3>Altered PMRs:</h3>
+								<div class="expression">
+									<textarea id="editNotificationsAlteredPMRs" spellcheck="false" spellcheck="false" placeholder="(number like '99999' || client == 'ABC') && ownerName == 'John Paul' && age >= '30' && monitoringQueue"></textarea>
+									<pre></pre>
+								</div>
+								<button class="ok">OK</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<p id="editNotificationsError"></p>
+			</div>
+		</section>
+	</div>
+	
+	<div class="dialog" id="editPostItsDialog">
+		<section class="dialogContainer">
+			<img class="close" src="img/close.png" title="Close">
+			<img class="help" src="img/questionmark.png" title="Help">
+			<h1 class="dialogTitle">Edit Post-Its and Table</h1>
+			<div class="dialogBody">
+				<div class="dialogBodyDiv">
+				
+					<div class="accordion">
+						<div class="accordionGroup"">
+							<div class="accordionGroupHeaderDiv">
+								<img class="accordionGroupHeaderIcon">
+								<h3 class="accordionGroupHeaderTitle">Edit Yellow Post-It</h3>
+							</div>
+							<div class="accordionGroupItemsDiv">
+								<img src="img/postityellow.png">
+								<div>
+									<h3>Expression</h3>
+									<div class="expression">
+										<textarea spellcheck="false" spellcheck="false" class="editPostItExpression" postItColor="yellow" placeholder="(number like '99999' || client == 'ABC') && ownerName == 'John Paul' && age >= '30' && monitoringQueue"></textarea>
+										<pre></pre>
+									</div>									
+								</div>
+								<div>
+									<h3>Attribute</h3>
+									<textarea spellcheck="false" class="editPostItAttribute" postItColor="yellow" placeholder="number &#10;comment &#10;severity &#10;age"></textarea>
+								</div>	
+							</div>
+						</div>
+						
+						<div class="accordionGroup">
+							<div class="accordionGroupHeaderDiv">
+								<img class="accordionGroupHeaderIcon">
+								<h3 class="accordionGroupHeaderTitle">Edit Blue Post-It</h3>
+							</div>
+							<div class="accordionGroupItemsDiv">
+								<img src="img/postitblue.png">
+								<div>
+									<h3>Expression</h3>
+									<div class="expression">
+										<textarea spellcheck="false" class="editPostItExpression" postItColor="blue" placeholder="(number like '99999' || client == 'ABC') && ownerName == 'John Paul' && age >= '30' && monitoringQueue"></textarea>
+										<pre></pre>
+									</div>								
+								</div>
+								<div>
+									<h3>Attribute</h3>
+									<textarea spellcheck="false" class="editPostItAttribute" postItColor="blue" placeholder="number &#10;comment &#10;severity &#10;age"></textarea>
+								</div>	
+							</div>
+						</div>
+						
+						<div class="accordionGroup">
+							<div class="accordionGroupHeaderDiv">
+								<img class="accordionGroupHeaderIcon">
+								<h3 class="accordionGroupHeaderTitle">Edit Red Post-It</h3>
+							</div>
+							<div class="accordionGroupItemsDiv">
+								<img src="img/postitred.png">
+								<div>
+									<h3>Expression</h3>
+									<div class="expression">
+										<textarea spellcheck="false" class="editPostItExpression" postItColor="red" placeholder="(number like '99999' || client == 'ABC') && ownerName == 'John Paul' && age >= '30' && monitoringQueue"></textarea>
+										<pre></pre>
+									</div>								
+								</div>
+								<div>
+									<h3>Attribute</h3>
+									<textarea spellcheck="false" class="editPostItAttribute" postItColor="red" placeholder="number &#10;comment &#10;severity &#10;age"></textarea>
+								</div>	
+							</div>
+						</div>
+						
+						<div class="accordionGroup">
+							<div class="accordionGroupHeaderDiv">
+								<img class="accordionGroupHeaderIcon">
+								<h3 class="accordionGroupHeaderTitle">Edit Gray Post-It</h3>
+							</div>
+							<div class="accordionGroupItemsDiv">
+								<img src="img/postitgray.png">
+								<div>
+									<h3>Expression</h3>
+									<div class="expression">
+										<textarea spellcheck="false" class="editPostItExpression" postItColor="gray" placeholder="(number like '99999' || client == 'ABC') && ownerName == 'John Paul' && age >= '30' && monitoringQueue"></textarea>
+										<pre></pre>
+									</div>								
+								</div>
+								<div>
+									<h3>Attribute</h3>
+									<textarea spellcheck="false" class="editPostItAttribute" postItColor="gray" placeholder="number &#10;comment &#10;severity &#10;age"></textarea>
+								</div>	
+							</div>
+						</div>
+						
+						<div class="accordionGroup">
+							<div class="accordionGroupHeaderDiv">
+								<img class="accordionGroupHeaderIcon">
+								<h3 class="accordionGroupHeaderTitle">Edit Purple Post-It</h3>
+							</div>
+							<div class="accordionGroupItemsDiv">
+								<img src="img/postitpurple.png">
+								<div>
+									<h3>Expression</h3>
+									<div class="expression">
+										<textarea spellcheck="false" class="editPostItExpression" postItColor="purple" placeholder="(number like '99999' || client == 'ABC') && ownerName == 'John Paul' && age >= '30' && monitoringQueue"></textarea>
+										<pre></pre>
+									</div>								
+								</div>
+								<div>
+									<h3>Attribute</h3>
+									<textarea spellcheck="false" class="editPostItAttribute" postItColor="purple"purple"" placeholder="number &#10;comment &#10;severity &#10;age"></textarea>
+								</div>	
+							</div>
+						</div>
+						
+						<div class="accordionGroup">
+							<div class="accordionGroupHeaderDiv">
+								<img class="accordionGroupHeaderIcon">
+								<h3 class="accordionGroupHeaderTitle">Edit Orange Post-It</h3>
+							</div>
+							<div class="accordionGroupItemsDiv">
+								<img src="img/postitorange.png">
+								<div>
+									<h3>Expression</h3>
+									<div class="expression">
+										<textarea spellcheck="false" class="editPostItExpression" postItColor="orange" placeholder="(number like '99999' || client == 'ABC') && ownerName == 'John Paul' && age >= '30' && monitoringQueue"></textarea>
+										<pre></pre>
+									</div>
+								</div>
+								<div>
+									<h3>Attribute</h3>
+									<textarea spellcheck="false" class="editPostItAttribute" postItColor="orange" placeholder="number &#10;comment &#10;severity &#10;age"></textarea>
+								</div>	
+							</div>
+						</div>
+						
+						<div class="accordionGroup">
+							<div class="accordionGroupHeaderDiv">
+								<img class="accordionGroupHeaderIcon">
+								<h3 class="accordionGroupHeaderTitle">Edit Green Post-It</h3>
+							</div>
+							<div class="accordionGroupItemsDiv">
+								<img src="img/postitgreen.png">
+								<div>
+									<h3>Expression</h3>
+									<div class="expression">
+										<textarea spellcheck="false" class="editPostItExpression" postItColor="green" placeholder="(number like '99999' || client == 'ABC') && ownerName == 'John Paul' && age >= '30' && monitoringQueue"></textarea>
+										<pre></pre>
+									</div>
+								</div>
+								<div>
+									<h3>Attribute</h3>
+									<textarea spellcheck="false" class="editPostItAttribute" postItColor="green" placeholder="number &#10;comment &#10;severity &#10;age"></textarea>
+								</div>	
+							</div>
+						</div>
+						
+						<div class="accordionGroup">
+							<div class="accordionGroupHeaderDiv">
+								<img class="accordionGroupHeaderIcon">
+								<h3 class="accordionGroupHeaderTitle">Edit View Table</h3>
+							</div>
+							<div class="accordionGroupItemsDiv">
+								<div>
+									<h3>Attributes</h3>
+									<textarea spellcheck="false" id="editPostItTable" postItColor="green" placeholder="number &#10;comment &#10;severity &#10;age"></textarea>
+								</div>	
+							</div>
+						</div>
+					</div>
+				</div>
+				<p id="editPostItsError"></p>
+				<div class="dialogButtons">
+					<button class="ok">OK</button>
+				</div>
+			</div>
+		</section>
+	</div>
+
+	<div class="dialog" id="pmrDetailsDialog">
+		<section class="dialogContainer">
+			<img class="close" src="img/close.png" title="Close">
+			<h1 class="dialogTitle"></h1>
+			<div class="dialogBody">				
+						
+				<div class="accordion">
+					<div class="accordionGroup" id="pmrDetailsInformation">
+						<div class="accordionGroupHeaderDiv">
+							<img class="accordionGroupHeaderIcon">
+							<h3 class="accordionGroupHeaderTitle">PMR Information<h3>
+						</div>
+						<div class="accordionGroupItemsDiv">
+							<p><Strong>Comment: </Strong><span id="pmrDetailsInformationComment"></span></p>
+							<p><Strong>PMR Number: </Strong><span id="pmrDetailsInformationPmrNumber"></span></p>
+							<p><Strong>Severity: </Strong><span id="pmrDetailsInformationSeverity"></span></p>
+							<p><Strong>CritSit: </Strong><span id="pmrDetailsInformationCritSit"></span></p>
+							<p><Strong>Age: </Strong><span id="pmrDetailsInformationAge"></span> days</p>
+							
+							<br>
+							<p><Strong>Queue: </Strong><span id="pmrDetailsInformationPmrQueue"></span></p>
+							<p><Strong>Time on Queue: </Strong><span id="pmrDetailsInformationTimeOnQueue"></span> days</p>
+							
+							<br>
+							<p><Strong>Owner: </Strong><span id="pmrDetailsInformationPmrOwner"></span></p>
+							<p><Strong>Resolver: </Strong><span id="pmrDetailsInformationPmrResolver"></span></p>
+							<p><Strong>Resolver5: </Strong><span id="pmrDetailsInformationResolver5"></span></p>
+							
+							<br>
+							<p><Strong>Client: </Strong><span id="pmrDetailsInformationClient"></span></p>
+							
+							<br>
+							<p><Strong>APAR: </Strong><span id="pmrDetailsInformationAPAR"></span></p>
+						</div>
+					</div>
+					
+					<div class="accordionGroup" id="pmrDetailsActions">
+						<div class="accordionGroupHeaderDiv">
+							<img class="accordionGroupHeaderIcon">
+							<h3 class="accordionGroupHeaderTitle">Actions<h3>
+						</div>
+						<div class="accordionGroupItemsDiv">
+							<div id="pmrDetailsActionsOpenEcuRep">
+								<img src="img/ecurep.png">
+								<p>Open EcuRep</p>
+							</div>							
+							<div id="pmrDetailsActionsAddPrivateNote">
+								<img src="img/privatenote.png">
+								<p>Add Private Note</p>
+							</div>							
+							<div id="pmrDetailsActionsSetResolver5">
+								<img src="img/resolver5.png">
+								<p>Set Resolver 5</p>
+							</div>
+							<div id="pmrDetailsActionsChangeQueue">
+								<img src="img/changequeue.png">
+								<p>Change Queue</p>
+							</div>
+						</div>
+					</div>
+					
+					<div class="accordionGroup" id="pmrDetailsEmails">
+						<div class="accordionGroupHeaderDiv">
+							<img class="accordionGroupHeaderIcon">
+							<h3 class="accordionGroupHeaderTitle">Emails<h3>
+						</div>
+						<div class="accordionGroupItemsDiv">
+						
+						</div>
+					</div>
+					
+					<div class="accordionGroup" id="pmrDetailsFiles">
+						<div class="accordionGroupHeaderDiv">
+							<img class="accordionGroupHeaderIcon">
+							<h3 class="accordionGroupHeaderTitle">Files<h3>
+						</div>
+						<div class="accordionGroupItemsDiv">
+						
+						</div>
+					</div>
+					
+					<div class="accordionGroup" id="pmrDetailsStatusHistory">
+						<div class="accordionGroupHeaderDiv">
+							<img class="accordionGroupHeaderIcon">
+							<h3 class="accordionGroupHeaderTitle">Staus History<h3>
+						</div>
+						<div class="accordionGroupItemsDiv">
+						
+						</div>
+					</div>								
+				</div>
+				
+				<div id="pmrDetailsText">
+				</div>
+								
+			</div>
+		</section>
+	</div>
+
+	<div class="dialog" id="editMonitoringQueuesDialog">
+		<section class="dialogContainer">
+			<img class="close" src="img/close.png" title="Close">
+			<img class="help" src="img/questionmark.png" title="Help">
+			<h1 class="dialogTitle">Monitoring Queues</h1>
+			<div class="dialogBody">
+				<div class="dialogBodyDiv" id="editMonitoringQueuesAvailableQueues">
+					<h3 class="dialogBodyDivTitle">Available Queues</h3>
+					<div class="dialogBodyDivBody">
+					</div>
+				</div>
+
+				<div class="dialogBodyDiv" id=editMonitoringQueuesMonitoringQueues>
+					<h3 class="dialogBodyDivTitle">Monitoring Queues</h3>
+					<div class="dialogBodyDivBody">
+					</div>
+				</div>
+			</div>
+			<div class="dialogButtons">
+				<button class="ok">OK</button>
+			</div>
+		</section>
+	</div>
+
+	<div class="dialog" id="editViewHelpDialog">
+		<section class="dialogContainer">
+			<img class="close" src="img/close.png" title="Close">
+			<h1 class="dialogTitle">Edit View Help</h1>
+			<div class="dialogBody">
+				<h3 class="editViewHelpTitle">Queues</h3>
+				<p class="editViewHelpDescription">Search for all PMRs from the selected queue.</p>
+
+				<h3 class="editViewHelpTitle">Engineers</h3>
+				<p class="editViewHelpDescription">Search for all PMRs from the selected engineer, who can be the owner, resolver or resolver5.</p>
+
+				<h3 class="editViewHelpTitle">Status</h3>
+				<p class="editViewHelpDescription">Search for all PMRs from the monitoring queues that have the select status.</p>
+				<p class="editViewHelpDescription">The status does not have any link to the PMR status on Retain. It's an internal status only used for management purposes.</p>
+				<p class="editViewHelpDescription">Only status Done from the last week are selected.</p>
+
+				<h3 class="editViewHelpTitle">PMR Attribute - Aged</h3>
+				<p class="editViewHelpDescription">Search for all PMRs from the monitoring queues that are aged.</p>
+				<p class="editViewHelpDescription">Aged criteria varies according to the PMR severity (Sev 1 = 30 days, Sev 2 = 60 days, Sev 3 = 90 days, Sev 4 = 90 days).</p>
+
+				<h3 class="editViewHelpTitle">PMR Attribute - Critsit</h3>
+				<p class="editViewHelpDescription">Search for all PMRs from the monitoring queues that Critical Situation flag.</p>
+
+				<h3 class="editViewHelpTitle">PMR Attribute - Severity</h3>
+				<p class="editViewHelpDescription">Search for all PMRs from the monitoring queues that have the select severity.</p>
+
+				<h3 class="editViewHelpTitle">Clients</h3>
+				<p class="editViewHelpDescription">Search for all PMRs from the monitoring queues that belongs to the selected client.</p>
+			</div>
+		</section>
+	</div>
+
+	<div class="dialog" id="editMonitoringQueuesHelpDialog">
+		<section class="dialogContainer">
+			<img class="close" src="img/close.png" title="Close">
+			<h1 class="dialogTitle">Edit Monitoring Queues Help</h1>
+			<div class="dialogBody">
+				<h3 class="editMonitoringQueuesHelpTitle">Available Queues</h3>
+				<p class="editMonitoringQueuesHelpDescription">Shows all queues that are not selected.</p>
+
+				<h3 class="editMonitoringQueuesHelpTitle">Monitoring Queues</h3>
+				<p class="editMonitoringQueuesHelpDescription">Shows all queues selected.</p>
+				<p class="editMonitoringQueuesHelpDescription">Columns Status, PMR Attribute and Clients shows only PMRs from the queues selected.</p>
+			</div>
+		</section>
+	</div>
+	
+	<div id="loading">
+		<div>
+			<img src="img/loading.gif">
+		</div>
+	</div>
+	
+	<header id="header">
+		<div id="logo">
+			<img id="logoIcon" src="img/logo.png">
+			<h1 id="logoTitle">TicketView</h1>
+		</div>
+
+		<div id="search">
+			<input id="searchPMR" type="text" placeholder="Search PMR...">
+			<img id="searchIcon" src="img/search.png">
+		</div>
+
+		<div id="user">
+			<div id="userContainer">
+				<p id="userName"></p>
+				<a href="#" id="logout">Logout</a>
+			</div>
+		</div>
+	</header>
+
+	<p id="log"></p>
+
+	<nav id="controls">
+		<div id="navigation">
+			<select id="savedViews">
+				<optgroup id="savedViewsMyViews" label="My Views">
+				</optgroup>
+				<optgroup id="savedViewsPublicViews" label="Public Views">
+				</optgroup>
+			</select>
+		</div>
+		<div id="actions">
+			<img id="menu" src="img/menu.png">
+			<div id="menuActions">
+				<div id="editView">
+					<img src="img/edit.png">
+					<p>Edit View</p>
+				</div>
+				<div id="editPostIts">
+					<img src="img/postit.png">
+					<p>Edit Post-Its and Table</p>
+				</div>
+				<div id="editMonitoringQueues">
+					<img src="img/queue.png">
+					<p>Edit Monitoring Queues</p>
+				</div>
+				<div id="exportToExcel">
+					<img src="img/excel.png">
+					<p>Export to Excel</p>
+				</div>
+				<div id="exportView">
+					<img src="img/export.png">
+					<p>Export View</p>
+				</div>
+				<div id="importView">
+					<img src="img/import.png">
+					<p>Import View</p>
+				</div>
+				<div id="editNotifications">
+					<img src="img/notification.png">
+					<p>Notifications</p>
+				</div>
+				<div id="toggleDisplayMode">
+					<img src="img/toggledisplay.png">
+					<p>Toggle Display Mode</p>
+				</div>
+				<div id="refreshView">
+					<img src="img/refresh.png">
+					<p>Refresh View</p>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<div id="notification">0</div>
+
+	<section id="mainContent">
+		<div class="mainContentGroup">
+			<div class="mainContentDiv">
+			</div>
+		</div>
+	</section>
+
+	<footer id="footer">
+	</footer>
+
+	</body>
+</html>
